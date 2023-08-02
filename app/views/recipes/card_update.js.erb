@@ -1,0 +1,6 @@
+// controllerでどのカードかは特定済なので、そのカードの内容をupdate
+$("#product_item_name_<%= @global %>").html("<%= j(render partial: 'recipes/recipe_product', locals: { products: @recipe.recipe_products }) %>");
+
+$("#material_item_name_<%= @global %>").html("<%= j(render partial: 'recipes/recipe_material', locals: { materials: @recipe.recipe_materials }) %>");
+
+$("#machine_item_name_<%= @global %>").html("<%= j(render partial: 'recipes/machine', locals: { machine: @recipe.machine }) %>");

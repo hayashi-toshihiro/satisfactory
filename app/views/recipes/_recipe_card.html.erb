@@ -1,0 +1,41 @@
+<div id="recipe_card_<%= global %>">
+  <%= form_with(url: recipes_card_update_path(global: global), local: false, method: :post, id: "recipe_name_form_#{global}") do |f| %>
+    <div class="card">
+      <div class="card-header">
+        <div class="col-8", id="js_recipe_name_<%= global %>">
+          <%= f.select :recipe_id, options_for_select(Recipe.pluck(:recipe_name, :id), selected: @recipe.id),{}, class: "js_recipe_name_#{global}" %>
+        </div>
+      </div>
+      <div class="card-body overflow-auto" style="resize: both; min-width: 200px">
+        <div class="row  align-items-center" style="min-width: 500px">
+          <div class="col-md-4">
+            <div id="product_item_name_<%= $global %>">
+              <%= render partial: "recipe_product", locals: { products: @recipe.recipe_products} %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div id="machine_item_name_<%= $global %>">
+              <%= render partial: "machine", locals: { machine: @recipe.machine } %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div id="material_item_name_<%= $global %>">
+              <%= render partial: "recipe_material", locals: { materials: @recipe.recipe_materials } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= f.button "登録", type: "button", onclick: "submit();", class: "btn btn-outline-dark", style: "display:none;", id: "js_button_#{global}", data: {disable_with: false} %>
+      </div>
+    </div>
+  <% end %>
+  <div class="form_<%= button_count %>">
+    <%= form_with url: recipes_form_add_path(global: $global, button_count: button_count), local: false, html:{ class: "class_name"}, method: :post do |p| %>
+      <div class="add-form-button_<%= button_count %>", id="add-form-button_<%= button_count %>">
+        <%= p.submit "レシピの追加", class: "add_form_button" %>
+        <%= p.hidden_field :hidden %>
+      </div>
+    <% end %>
+  </div>
+</div>

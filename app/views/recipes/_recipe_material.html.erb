@@ -1,0 +1,26 @@
+<% number = 0 %>
+<% materials.each do |m| %>
+  <%= fields_for :recipe_materials do |g| %>
+    <div class="card" style="max-width: 222px;">
+      <div class="row g-0">
+        <h6 class="text-center card_title_font_size">素材</h6>
+        <div class="col-3 align-items-center d-flex">
+          <%= image_tag m.material.item_image.url, id: 'preview', size: '50x50', class: "mx-auto d-flex" %>
+        </div>
+        <div class="col-9 col-sm-8">
+          <div class="col-11 card_font_size">
+            <%= g.label :material_name %>
+            <div class="form-control-sm form-control card_font_size">
+              <%= m.material.item_name %>
+            </div>
+            <%= g.label :material_time %>
+            <div class="form-control-sm form-control card_font_size material_time_<%= @global %>", default_time="<%= m.material_time %>", id="material_time_<%= @global %>_<%= number %>">
+              <%= m.material_time %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% number += 1 %>
+<% end %>

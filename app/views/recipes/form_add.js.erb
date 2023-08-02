@@ -1,0 +1,15 @@
+// controllerでどこにカードを追加するかは特定済なので、カードを追加する(ボタンも含む)
+$('.card_wrapper_<%= @button_count_n %>').prepend('<%= j(render partial: "recipe_card", locals: { recipe: @recipe, global: $global, button_count: @button_count_n}) %>');
+// ルールに従って自分のボタンの名前を変更する。
+var newForm = `
+  <div class="form_<%= @button_count_o %>">
+    <%= form_with url: recipes_form_add_path(global: $global, button_count: @button_count_o), local: false, html:{ class: @button_count_o}, method: :post do |p| %>
+      <div class="add-form-button_<%= @button_count_o %>", id="add-form-button_<%= @button_count_o %>">
+        <%= p.submit "レシピの追加", class: "add_form_button" %>
+        <%= p.hidden_field :button, { value: @button_count_o } %>
+      </div>
+    <% end %>
+  </div>
+`;
+
+$('.form_<%= @button_count %>').replaceWith(newForm);

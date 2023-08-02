@@ -1,0 +1,86 @@
+<div class="container table-responsive">
+  <div class="row">
+    <div class="col">
+      <%= simple_form_for @recipe, html: { novalidate: true } do |f| %>
+        <div class="card">
+          <div class="card-header">
+            <div class="container">
+              <div class="row">
+                <div class= "col">
+                  <%= f.input :recipe_name %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row align-items-center">
+<%# -- 完成物のカード -- #%>
+            <div class="col-md-4">
+              <% 2.times do %>
+                <div class="card" style="max-width: 222px;">
+                  <div class="row g-0">
+                    <h5 class="text-center">完成物</h5>
+                    <div class="col-5 col-sm-4">
+                      <img src="assets/images/Turbofuel.png" class="img-fluid w-100" alt="card-horizontal-image">
+                    </div>
+                    <div class="col-5 col-sm-8">
+                      <%= f.simple_fields_for :recipe_products_attributes do |p| %>
+                        <div class="card-body text-muted">
+                          <%= p.input :recipe_products, as: :select, collection:(Item.pluck(:item_name, :id)),input_html: { name: 'recipe[recipe_products][]' } %>
+                          <%= f.simple_fields_for @recipe_product do |fm| %>
+                            <%= fm.input :product_time, input_html: { name: 'recipe[recipe_products_time][]', style: "width: 100%"}%>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+<%# -- 機械のカード -- #%>
+            <div class="col-md-4">
+              <div class="card" style="max-width: 222px;">
+                <div class="row g-0">
+                  <h5 class="text-center">機械</h5>
+                  <div class="col-5 col-sm-3">
+                    <img src="assets/images/Turbofuel.png" class="img-fluid w-100" alt="card-horizontal-image">
+                  </div>
+                  <div class="col-7 col-sm-8">
+                    <div class="card-body text-muted">
+                      <%= f.input :machine_id, as: :select, collection: (Machine.pluck(:machine_name, :id))%>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+            </div>
+<%# -- 素材のカード -- #%>
+            <div class="col-md-4">
+              <% 4.times do %>
+                <div class="card" style="max-width: 222px;">
+                  <div class="row g-0">
+                    <h5 class="text-center">素材</h5>
+                    <div class="col-5 col-sm-4">
+                      <img src="assets/images/Turbofuel.png" class="img-fluid w-100" alt="card-horizontal-image">
+                    </div>
+                    <div class="col-5 col-sm-8">
+                      <%= f.simple_fields_for :recipe_materials_attributes do |g| %>
+                        <div class="card-body text-muted">
+                          <%= g.input :recipe_materials, as: :select, collection:(Item.pluck(:item_name, :id)),input_html: { name: 'recipe[recipe_materials][]' } %>
+                          <%= f.simple_fields_for @recipe_material do |fm| %>
+                            <%= fm.input :material_time, input_html: { name: 'recipe[recipe_materials_time][]', style: "width: 100%"} %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="text-center">
+            <%= f.submit "登録", class: "btn btn-outline-dark", style: "width: 33%" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

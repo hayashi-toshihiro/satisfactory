@@ -1,0 +1,21 @@
+<%= fields_for :machines do |g| %>
+  <div class="card" style="max-width: 222px;">
+    <div class="row g-0">
+      <h6 class="text-center card_title_font_size">機械</h6>
+      <div class="col-3 align-items-center d-flex">
+      </div>
+      <div class="col-9 col-sm-8">
+        <div class="col-11 card_font_size">
+          <%= g.label :machine_name %>
+          <div class="form-control form-control-sm card_font_size">
+            <%= machine.machine_name %>
+          </div>
+          <%= g.label :electricity %>
+          <div class="form-control form-control-sm card_font_size electricity_<%= @global %>", default_electricity="<%= machine.electricity %>", id="electricity_<%= @global %>">
+            <%= machine.electricity %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

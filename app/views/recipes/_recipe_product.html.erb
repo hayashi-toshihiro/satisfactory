@@ -1,0 +1,25 @@
+<% number = 0 %>
+<% products.each do |m| %>
+  <%= fields_for :recipe_product do |g| %>
+    <div class="card" style="max-width: 222px;">
+      <div class="row g-0">
+        <h6 class="text-center card_title_font_size">完成物</h6>
+        <div class="col-3 align-items-center d-flex">
+          <%= image_tag m.product.item_image.url, id: 'preview', size: '50x50', class: "mx-auto d-flex" %>
+        </div>
+        <div class="col-9 col-sm-8">
+          <div class="col-11 card_font_size">
+            <%= g.label :product_name %>
+            <div class="form-control form-control-sm card_font_size">
+              <%= m.product.item_name %>
+            </div>
+            <%= g.label :product_time %>
+            <%= g.number_field :product_time, value: m.product_time, class: "form-control form-control-sm card_font_size product_time_#{@global}",default_time: "#{m.product_time}", id: "time_#{@global}_#{number}" %>
+            <%= text_field_tag :product_time, '', style: 'display:none;' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% number += 1 %>
+<% end %>
+   

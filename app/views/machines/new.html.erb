@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= simple_form_for @machine do |f| %>
+        <div class="card" style="max-width: 222px;">
+          <div class="row g-0">
+            <h5 class="text-center">機械</h5>
+            <div class="col-5 col-sm-3">
+              <img src="assets/images/Turbofuel.png" class="img-fluid w-100" alt="card-horizontal-image">
+            </div>
+            <div class="col-7 col-sm-8">
+              <div class="card-body text-muted">
+                <%= f.input :machine_name, input_html: { style: "width: 100%; height: 23px;" } %>
+                <%= f.input :electricity, input_html: { style: "width: 100%; height: 23px;" } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= f.submit "登録", class: "btn btn-outline-dark"%>
+      <% end %>
+    </div>
+  </div>
+</div>
