@@ -9,7 +9,7 @@ class RecipeMaterialsController < ApplicationController
     if @form.save
       redirect_to recipes_path, notice: "登録できたよ"
     else
-      flach.now(:alert) = "できんかった"
+      flash.now[:alert] = "できんかった"
       render :new
     end
   end
