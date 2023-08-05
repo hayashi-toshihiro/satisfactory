@@ -8,9 +8,9 @@ CarrierWave.configure do |config|
   config.fog_directory  = 'satisfactorycreate'
   config.fog_credentials = {
     provider: 'AWS',
-    aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-    region: ENV['AWS_DEFAULT_REGION'],
+    aws_access_key_id: ENV['AKIAWOEBS25OXJLE4SMV'],
+    aws_secret_access_key: ENV['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'],
+    region: ENV['ap-northeast-1'],
     path_style: true
   }
 
