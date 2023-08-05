@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to controller: :recipes, action: :index
+      redirect_to root_path
     else
       flash.now[:danger] = "セーブ失敗"
       render :new
