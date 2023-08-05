@@ -68,3 +68,5 @@ gem 'bootstrap'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'pry-byebug'
+gem 'fog-aws'
+gem 'aws-sdk-s3', require: false
