@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to "https://satisfactorycreate-baa05d2bacf4.herokuapp.com/recipes"
     else
       flash.now[:danger] = "セーブ失敗"
       render :new
