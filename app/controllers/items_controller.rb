@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      flach.now[:success] = "セーブ成功"
-      render :new
+      flash.now[:success] = "セーブ成功"
+      redirect_to recipes_path
     else
       flash.now[:danger] = "セーブ失敗"
       render :new
