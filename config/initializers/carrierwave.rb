@@ -14,5 +14,6 @@ unless Rails.env.development? || Rails.env.test?
   
     config.fog_directory = 'satisfactorycreate'
     config.cache_storage = :fog
+    config.fog_public = false
   end
 end
