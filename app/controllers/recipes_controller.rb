@@ -9,7 +9,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    binding.pry
     @recipe = Recipe.new(recipe_params)
 # 完成物(recipe_products)中間テーブル作成のための配列を取得
     @products = Item.where(id: params[:recipe][:recipe_products])
