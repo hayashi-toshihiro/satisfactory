@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
 
     @products.zip(recipe_products_times) do |product, recipe_products_time|
       @recipe.products << [product]
-      @recipe.recipe_products[@recipe.products.size - 1].product_time = recipe_products_time.to_i
+      @recipe.recipe_products[@recipe.products.size - 1].product_time = recipe_products_time.to_f
     end
 
 # 素材（recipe_materials)についても同様な処理を実行
@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
     recipe_materials_times = params[:recipe][:recipe_materials_time]
     @materials.zip(recipe_materials_times) do |material, recipe_materials_time|
       @recipe.materials << [material]    
-      @recipe.recipe_materials[@recipe.materials.size - 1].material_time = recipe_materials_time.to_i
+      @recipe.recipe_materials[@recipe.materials.size - 1].material_time = recipe_materials_time.to_f
     end
 
     if @recipe.save
