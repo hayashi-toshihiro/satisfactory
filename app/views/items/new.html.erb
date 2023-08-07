@@ -4,14 +4,11 @@
       <div class="row g-0">
         <h5 class="text-center">素材1</h5>
         <div class="col-3 align-items-center d-flex">
-          <% #image_tag Item.find(8).item_image.url, id: 'preview', size: '50x50', class: "mx-auto d-flex" %>
         </div>
         <div class="col-9">
           <div class="card-body text-muted">
             <%= f.input :item_name, input_html: { style: "width: 100%; height: 23px; margin-bottom: 5px;" }%>
             <% # 画像ファイル選択ボタンを装飾 %>
-            <% # f.input :item_image, label: false, input_html: { onchange: "$('#fake_input_file').val($(this).val())", style: "display: none;", id: "img" } %>
-            <% # <input type="button" value="画像を選択" onClick="$('#img').click();" class="btn btn-sm btn-outline-info"> %>
             <%= f.file_field :item_image %>
           </div>
         </div>
